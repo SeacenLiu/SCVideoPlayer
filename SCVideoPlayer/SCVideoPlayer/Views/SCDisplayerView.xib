@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SCDisplayerView">
+            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2w-W1-vc1">
+                    <rect key="frame" x="0.0" y="0.0" width="667" height="32"/>
+                    <items>
+                        <navigationItem title="Title" id="gDa-mk-TtT">
+                            <barButtonItem key="leftBarButtonItem" id="VNo-HA-2Fb">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OFN-oK-adV">
+                                    <rect key="frame" x="20" y="1" width="80" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Done">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="closeWindow:" destination="iN0-l3-epB" eventType="touchUpInside" id="12F-4M-N2b"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" id="Qe9-lA-eHl">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dLy-LH-8bw">
+                                    <rect key="frame" x="567" y="1" width="80" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Show">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="toggleFilmstrip:" destination="iN0-l3-epB" eventType="touchUpInside" id="GYh-3i-CBv"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZh-26-E56">
+                    <rect key="frame" x="0.0" y="331" width="667" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="mZb-LW-Blp"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem systemItem="flexibleSpace" id="tOi-Xj-LEN"/>
+                        <barButtonItem title="Item" style="plain" id="Z1B-j7-sut">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="g1S-Xi-lxG">
+                                <rect key="frame" x="141" y="10" width="21" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="play_button"/>
+                                <state key="selected" image="pause_button"/>
+                                <connections>
+                                    <action selector="togglePlayback:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hil-HZ-TGP"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem width="42" systemItem="fixedSpace" id="l5E-1g-Dvv"/>
+                        <barButtonItem style="plain" id="mfB-wg-2Wu">
+                            <view key="customView" contentMode="scaleToFill" id="2Ge-0v-5KH">
+                                <rect key="frame" x="204" y="11.5" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBI-s1-vCY">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </barButtonItem>
+                        <barButtonItem style="plain" id="JSa-E1-oOL">
+                            <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" id="epB-2E-ltd">
+                                <rect key="frame" x="246" y="5" width="248" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="endScrubbing:" destination="iN0-l3-epB" eventType="touchUpInside" id="VUL-Ef-Zro"/>
+                                    <action selector="showScrubbing:" destination="iN0-l3-epB" eventType="valueChanged" id="gmy-7t-gfr"/>
+                                    <action selector="startScrubbing:" destination="iN0-l3-epB" eventType="touchDown" id="yq6-oo-m9D"/>
+                                </connections>
+                            </slider>
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" id="sVp-Xg-SnM">
+                            <view key="customView" contentMode="scaleToFill" id="8Fp-so-3hr">
+                                <rect key="frame" x="494" y="11.5" width="32" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChS-nY-agV">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="uc6-c4-rXN"/>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="uZh-26-E56" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="4lG-Ac-wLb"/>
+                <constraint firstItem="Y2w-W1-vc1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KM5-tB-oyN"/>
+                <constraint firstAttribute="trailing" secondItem="Y2w-W1-vc1" secondAttribute="trailing" id="SZP-Kq-FFP"/>
+                <constraint firstItem="uZh-26-E56" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SdV-Fd-YvD"/>
+                <constraint firstAttribute="trailing" secondItem="uZh-26-E56" secondAttribute="trailing" id="Tif-Ym-e3L"/>
+                <constraint firstItem="Y2w-W1-vc1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="tY4-1r-jy8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="currentTimeLabel" destination="aBI-s1-vCY" id="e7J-8e-jMs"/>
+                <outlet property="filmstripToggleButton" destination="dLy-LH-8bw" id="fgY-I2-hPm"/>
+                <outlet property="navigationBar" destination="Y2w-W1-vc1" id="u4m-nQ-UMl"/>
+                <outlet property="remainingTimeLabel" destination="ChS-nY-agV" id="rlJ-kJ-U3w"/>
+                <outlet property="scrubberSlider" destination="epB-2E-ltd" id="i2c-xI-P23"/>
+                <outlet property="togglePlaybackButton" destination="g1S-Xi-lxG" id="vcf-an-GXh"/>
+                <outlet property="toolbar" destination="uZh-26-E56" id="byr-Mi-ZNq"/>
+                <outletCollection property="gestureRecognizers" destination="Qhg-XK-7AA" appends="YES" id="bKu-T2-f0Q"/>
+                <outletCollection property="gestureRecognizers" destination="WgC-Ds-jVU" appends="YES" id="anY-v0-KXG"/>
+            </connections>
+            <point key="canvasLocation" x="312.59370314842579" y="-474.39999999999998"/>
+        </view>
+        <tapGestureRecognizer id="Qhg-XK-7AA">
+            <connections>
+                <action selector="toggleControls:" destination="iN0-l3-epB" id="yea-oB-M3L"/>
+                <outlet property="delegate" destination="iN0-l3-epB" id="9bu-It-nlL"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer numberOfTapsRequired="2" id="WgC-Ds-jVU">
+            <connections>
+                <action selector="togglePlayback:" destination="iN0-l3-epB" id="gch-Ei-8nz"/>
+                <outlet property="delegate" destination="iN0-l3-epB" id="A6C-eg-sFR"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="pause_button" width="19" height="21"/>
+        <image name="play_button" width="21" height="24"/>
+    </resources>
+</document>
