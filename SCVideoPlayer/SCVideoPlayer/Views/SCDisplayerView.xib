@@ -16,6 +16,26 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-tC-pPe" customClass="SCFilmstripView">
+                    <rect key="frame" x="0.0" y="-99" width="667" height="99"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcx-t1-ja2">
+                            <rect key="frame" x="0.0" y="43" width="667" height="56"/>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="99" id="09H-rn-ghP"/>
+                        <constraint firstItem="Wcx-t1-ja2" firstAttribute="trailing" secondItem="7Cj-OU-pze" secondAttribute="trailing" id="Dba-OJ-cpT"/>
+                        <constraint firstItem="Wcx-t1-ja2" firstAttribute="leading" secondItem="7Cj-OU-pze" secondAttribute="leading" id="i3o-Tt-0hL"/>
+                        <constraint firstItem="Wcx-t1-ja2" firstAttribute="bottom" secondItem="7Cj-OU-pze" secondAttribute="bottom" id="lHc-yF-5EI"/>
+                        <constraint firstItem="Wcx-t1-ja2" firstAttribute="top" secondItem="7Cj-OU-pze" secondAttribute="top" constant="43" id="xyu-fW-9uI"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="7Cj-OU-pze"/>
+                    <connections>
+                        <outlet property="scrollView" destination="Wcx-t1-ja2" id="05v-yL-ddu"/>
+                    </connections>
+                </view>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2w-W1-vc1">
                     <rect key="frame" x="0.0" y="0.0" width="667" height="32"/>
                     <items>
@@ -118,16 +138,20 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="b6x-tC-pPe" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="2mf-dM-1MQ"/>
                 <constraint firstItem="uZh-26-E56" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="4lG-Ac-wLb"/>
                 <constraint firstItem="Y2w-W1-vc1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KM5-tB-oyN"/>
+                <constraint firstItem="b6x-tC-pPe" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="-99" id="Lvz-dE-BVC"/>
                 <constraint firstAttribute="trailing" secondItem="Y2w-W1-vc1" secondAttribute="trailing" id="SZP-Kq-FFP"/>
                 <constraint firstItem="uZh-26-E56" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SdV-Fd-YvD"/>
                 <constraint firstAttribute="trailing" secondItem="uZh-26-E56" secondAttribute="trailing" id="Tif-Ym-e3L"/>
+                <constraint firstItem="b6x-tC-pPe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="plU-sz-eFg"/>
                 <constraint firstItem="Y2w-W1-vc1" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="tY4-1r-jy8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="currentTimeLabel" destination="aBI-s1-vCY" id="e7J-8e-jMs"/>
+                <outlet property="filmStripView" destination="b6x-tC-pPe" id="I6i-Yt-nti"/>
                 <outlet property="filmstripToggleButton" destination="dLy-LH-8bw" id="fgY-I2-hPm"/>
                 <outlet property="navigationBar" destination="Y2w-W1-vc1" id="u4m-nQ-UMl"/>
                 <outlet property="remainingTimeLabel" destination="ChS-nY-agV" id="rlJ-kJ-U3w"/>

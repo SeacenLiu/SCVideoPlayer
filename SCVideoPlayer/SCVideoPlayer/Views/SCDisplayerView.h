@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SCVideoDisplayer.h"
 
+@class SCFilmstripView;
 @interface SCDisplayerView : UIView<SCVideoDisplayer>
 
 + (instancetype)operatedView;
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *remainingTimeLabel;
 @property (weak, nonatomic) IBOutlet UISlider *scrubberSlider;
+@property (weak, nonatomic) IBOutlet SCFilmstripView *filmStripView;
 
 @property (nonatomic, weak) id <SCVideoDisplayerDelegate> delegate;
 

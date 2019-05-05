@@ -21,6 +21,10 @@
 		14B113E62277691C003A81CE /* miku.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 14B113E52277690A003A81CE /* miku.mp4 */; };
 		14B113F4227BFBAD003A81CE /* UIView+SCHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B113EC22786D86003A81CE /* UIView+SCHUD.m */; };
 		14B113F8227EFE63003A81CE /* UIView+SCAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B113F7227EFE63003A81CE /* UIView+SCAddition.m */; };
+		14B113FB227F1663003A81CE /* SCFilmstripView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B113FA227F1663003A81CE /* SCFilmstripView.m */; };
+		14B113FE227F1706003A81CE /* SCThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B113FD227F1706003A81CE /* SCThumbnail.m */; };
+		14B11402227F1C5D003A81CE /* SCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B11401227F1C5D003A81CE /* SCNotifications.m */; };
+		14B11405227F1DC0003A81CE /* AVAsset+SCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B11404227F1DC0003A81CE /* AVAsset+SCAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,14 @@
 		14B113F5227EEAC2003A81CE /* SCVideoDisplayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVideoDisplayer.h; sourceTree = "<group>"; };
 		14B113F6227EFE63003A81CE /* UIView+SCAddition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+SCAddition.h"; sourceTree = "<group>"; };
 		14B113F7227EFE63003A81CE /* UIView+SCAddition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+SCAddition.m"; sourceTree = "<group>"; };
+		14B113F9227F1663003A81CE /* SCFilmstripView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFilmstripView.h; sourceTree = "<group>"; };
+		14B113FA227F1663003A81CE /* SCFilmstripView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFilmstripView.m; sourceTree = "<group>"; };
+		14B113FC227F1706003A81CE /* SCThumbnail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCThumbnail.h; sourceTree = "<group>"; };
+		14B113FD227F1706003A81CE /* SCThumbnail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCThumbnail.m; sourceTree = "<group>"; };
+		14B11400227F1C5D003A81CE /* SCNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCNotifications.h; sourceTree = "<group>"; };
+		14B11401227F1C5D003A81CE /* SCNotifications.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCNotifications.m; sourceTree = "<group>"; };
+		14B11403227F1DC0003A81CE /* AVAsset+SCAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVAsset+SCAdditions.h"; sourceTree = "<group>"; };
+		14B11404227F1DC0003A81CE /* AVAsset+SCAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVAsset+SCAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +123,7 @@
 				14B113CF22772C5C003A81CE /* Views */,
 				14B113D022772C62003A81CE /* Controllers */,
 				14B113EA22786A7E003A81CE /* Categories */,
+				14B113FF227F1C3D003A81CE /* Others */,
 			);
 			path = SCVideoPlayer;
 			sourceTree = "<group>";
@@ -119,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				14B113F5227EEAC2003A81CE /* SCVideoDisplayer.h */,
+				14B113FC227F1706003A81CE /* SCThumbnail.h */,
+				14B113FD227F1706003A81CE /* SCThumbnail.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,6 +146,8 @@
 				14B113DD2277310B003A81CE /* SCDisplayerView.h */,
 				14B113DE2277310B003A81CE /* SCDisplayerView.m */,
 				14B113E022773153003A81CE /* SCDisplayerView.xib */,
+				14B113F9227F1663003A81CE /* SCFilmstripView.h */,
+				14B113FA227F1663003A81CE /* SCFilmstripView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,8 +170,19 @@
 				14B113EC22786D86003A81CE /* UIView+SCHUD.m */,
 				14B113F6227EFE63003A81CE /* UIView+SCAddition.h */,
 				14B113F7227EFE63003A81CE /* UIView+SCAddition.m */,
+				14B11403227F1DC0003A81CE /* AVAsset+SCAdditions.h */,
+				14B11404227F1DC0003A81CE /* AVAsset+SCAdditions.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		14B113FF227F1C3D003A81CE /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				14B11400227F1C5D003A81CE /* SCNotifications.h */,
+				14B11401227F1C5D003A81CE /* SCNotifications.m */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,10 +262,14 @@
 				14B113D322772CA7003A81CE /* SCPlayerViewController.m in Sources */,
 				14B113C5227729C3003A81CE /* main.m in Sources */,
 				14B113D922772D50003A81CE /* SCPlayerView.m in Sources */,
+				14B113FE227F1706003A81CE /* SCThumbnail.m in Sources */,
 				14B113B7227729C1003A81CE /* AppDelegate.m in Sources */,
 				14B113D622772CCB003A81CE /* SCPlayerController.m in Sources */,
+				14B11405227F1DC0003A81CE /* AVAsset+SCAdditions.m in Sources */,
+				14B11402227F1C5D003A81CE /* SCNotifications.m in Sources */,
 				14B113F4227BFBAD003A81CE /* UIView+SCHUD.m in Sources */,
 				14B113DF2277310B003A81CE /* SCDisplayerView.m in Sources */,
+				14B113FB227F1663003A81CE /* SCFilmstripView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

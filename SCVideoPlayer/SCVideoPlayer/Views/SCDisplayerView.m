@@ -8,9 +8,11 @@
 
 #import "SCDisplayerView.h"
 #import "UIView+SCAddition.h"
+#import "SCFilmstripView.h"
 
 @interface SCDisplayerView() <UIGestureRecognizerDelegate>
 @property (nonatomic, assign) BOOL controlsHidden;
+@property (nonatomic, assign) BOOL filmstripHidden;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, assign) BOOL scrubbing;
 @property (nonatomic, assign) CGFloat lastPlaybackRate;
@@ -24,6 +26,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.filmstripHidden = YES;
+    [self setupUI];
     [self resetTimer];
 }
 
@@ -39,8 +43,22 @@
 - (IBAction)toggleControls:(id)sender {
     [UIView animateWithDuration:0.35 animations:^{
         if (!self.controlsHidden) {
-            self.navigationBar.top -= self.navigationBar.height;
-            self.toolbar.top += self.toolbar.height;
+            if (!self.filmstripHidden) {
+                [UIView animateWithDuration:0.35 animations:^{
+                    self.filmStripView.top -= self.filmStripView.height;
+                    self.filmstripHidden = YES;
+                    self.filmstripToggleButton.selected = NO;
+                } completion:^(BOOL complete) {
+                    self.filmStripView.hidden = YES;
+                    [UIView animateWithDuration:0.35 animations:^{
+                        self.navigationBar.top -= self.navigationBar.height;
+                        self.toolbar.top += self.toolbar.height;
+                    }];
+                }];
+            } else {
+                self.navigationBar.top -= self.navigationBar.height;
+                self.toolbar.top += self.toolbar.height;
+            }
         } else {
             self.navigationBar.top += self.navigationBar.height;
             self.toolbar.top -= self.toolbar.height;
@@ -92,10 +110,30 @@
 }
 
 - (IBAction)toggleFilmstrip:(id)sender {
-    // TODO: - 按帧跳转
+    [UIView animateWithDuration:0.35 animations:^{
+        if (self.filmstripHidden) {
+            self.filmStripView.hidden = NO;
+            self.filmStripView.top = 0;
+        } else {
+            self.filmStripView.top -= self.filmStripView.height;
+        }
+        self.filmstripHidden = !self.filmstripHidden;
+    } completion:^(BOOL complete) {
+        if (self.filmstripHidden) {
+            self.filmStripView.hidden = YES;
+        }
+    }];
+    self.filmstripToggleButton.selected = !self.filmstripToggleButton.selected;
 }
 
 #pragma mark - setupUI
+- (void)setupUI {
+    self.filmStripView.layer.shadowOffset = CGSizeMake(0, 2);
+    self.filmStripView.layer.shadowColor = [UIColor darkGrayColor].CGColor;
+    self.filmStripView.layer.shadowRadius = 2.0f;
+    self.filmStripView.layer.shadowOpacity = 0.8f;
+}
+
 - (void)resetTimer {
     [self.timer invalidate];
     if (!self.scrubbing) {

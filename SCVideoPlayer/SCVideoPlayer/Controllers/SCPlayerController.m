@@ -9,6 +9,9 @@
 #import "SCPlayerController.h"
 #import "SCPlayerView.h"
 #import "SCDisplayerView.h"
+#import "SCThumbnail.h"
+#import "SCNotifications.h"
+#import "AVAsset+SCAdditions.h"
 
 #define kPlayerStatusKeyPath @"status"
 #define kReftesfInterval 0.5f
@@ -27,6 +30,8 @@ static const NSString *PlayerItemStatusContext;
 @property (nonatomic, strong) id itemEndObserver;
 
 @property (nonatomic, assign) float lastPlaybackRate;
+
+@property (nonatomic, strong) AVAssetImageGenerator *imageGenerator;
 
 @end
 
@@ -85,11 +90,16 @@ static const NSString *PlayerItemStatusContext;
         // 播放器状态变换
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.playerItem removeObserver:self forKeyPath:kPlayerStatusKeyPath];
-            
             if (self.playerItem.status == AVPlayerItemStatusReadyToPlay) {
+                // 添加进度条监视器
                 [self addPlayerItemTimeObserver];
+                // 添加播放完成通知通知
                 [self addItemEndObserverForPlayerItem];
-                
+                // 生成20张缩略图（生成后集体通知返回）
+                [self generateThumbnails];
+                // 设置标题
+                [self.displayer setTitle:self.asset.title];
+                // 开始播放
                 [self.player play];
             } else {
                 // TODO: - 错误弹窗
@@ -154,6 +164,43 @@ static const NSString *PlayerItemStatusContext;
     if (self.lastPlaybackRate > 0.0f) {
         [self.player play];
     }
+}
+
+#pragma mark - Thumbnail Generation
+- (void)generateThumbnails {
+    self.imageGenerator = [AVAssetImageGenerator assetImageGeneratorWithAsset:self.asset];
+    
+    CGFloat scale = [UIScreen mainScreen].scale;
+    self.imageGenerator.maximumSize = CGSizeMake(100.0f*scale, 0.0f);
+    
+    CMTime duration = self.asset.duration;
+    
+    CMTimeValue increment = duration.value / 20;
+    CMTimeValue currentValue = 0.0;
+    NSMutableArray *times = [NSMutableArray arrayWithCapacity:20];
+    while (currentValue <= duration.value) {
+        CMTime time = CMTimeMake(currentValue, duration.timescale);
+        [times addObject:[NSValue valueWithCMTime:time]];
+        currentValue += increment;
+    }
+    
+    __block NSUInteger imageCount = times.count;
+    __block NSMutableArray *thumbnails = [NSMutableArray arrayWithCapacity:times.count];
+    [self.imageGenerator generateCGImagesAsynchronouslyForTimes:times completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+        if (result == AVAssetImageGeneratorSucceeded && image) {
+            UIImage *img = [UIImage imageWithCGImage:image];
+            SCThumbnail *thumbnail = [SCThumbnail thumbnailWithImage:img time:actualTime];
+            [thumbnails addObject:thumbnail];
+        } else {
+            NSLog(@"Failed to create thumnail image.");
+        }
+        
+        if (--imageCount == 0) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:SCThumbnailsGeneratedNotification object:thumbnails];
+            });
+        }
+    }];
 }
 
 #pragma mark - setter/getter
